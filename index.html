@@ -1,9 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>히히 하기싫다, 하지만 해야하지</title>
+    <title>To-Do List</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <h2>히히 하기싫다, 하지만 해야지</h2>
+      <input type="text" id="taskInput" placeholder="할 일을 입력하세요" />
+      <button onclick="addTask()">추가</button>
+      <ul id="taskList"></ul>
+    </div>
+
+    <script src="main.js"></script>
+    <!-- JavaScript 연결 -->
+  </body>
 </html>
