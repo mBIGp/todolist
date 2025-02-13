@@ -3,28 +3,125 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-Do List</title>
+    <title>하기 싫지만 해야 하는 것들</title>
     <style>
       body {
-        font-family: "Arial", sans-serif;
+        font-family: "Gaegu", cursive;
         background-color: #f4f4f4;
+        text-align: center;
+        margin: 0;
+        padding: 0;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        margin: 0;
+        background-image: url(./imh/그냥.0001.png);
+        background-size: 25%; /* 이미지 크기 줄이기 */
+        background-position: left bottom; /* 왼쪽 아래 배치 */
+        background-repeat: no-repeat;
+      }
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      input {
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        padding: 10px 15px;
+        font-size: 16px;
+        color: rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #b3b3b3;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+      }
+
+      li {
+        font-size: 18px;
+        padding: 10px;
+        margin: 5px 0;
+        background: #ffffff;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      li button {
+        background: #ffffff;
+        color: rgb(0, 0, 0);
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      li button:hover {
+        background: #b3b3b3;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h2>히히 하기싫다, 하지만 해야지</h2>
+      <h1>하기 싫지만 해야 하는 것들</h1>
       <input type="text" id="taskInput" placeholder="할 일을 입력하세요" />
       <button onclick="addTask()">추가</button>
       <ul id="taskList"></ul>
     </div>
 
-    <script src="main.js"></script>
-    <!-- JavaScript 연결 -->
+    <script>
+      function addTask() {
+        let taskInput = document.getElementById("taskInput");
+        let taskText = taskInput.value.trim();
+
+        if (taskText === "") {
+          alert("하기 싫은 건 알겠는데 입력은 해줘...");
+          return;
+        }
+
+        let li = document.createElement("li");
+        li.textContent = taskText;
+
+        let deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "삭제";
+        deleteBtn.onclick = function () {
+          li.remove();
+        };
+
+        li.appendChild(deleteBtn);
+        document.getElementById("taskList").appendChild(li);
+
+        taskInput.value = "";
+      }
+
+      document.getElementById("taskInput").addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          addTask();
+        }
+      });
+    </script>
   </body>
 </html>
